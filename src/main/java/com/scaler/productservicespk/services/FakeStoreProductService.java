@@ -31,14 +31,15 @@ public class FakeStoreProductService implements ProductService {
 
     @Override
     public List<Product> getAllProducts() {
-        FakeStoreProductsDto fakeStoreProductsDto = restTemplate.getForObject(
+        FakeStoreProductsDto[] fakeStoreProductsDtos = restTemplate.getForObject(
                 "https://fakestoreapi.com/products",
-                List<FakeStoreProductsDto>.class);
+                FakeStoreProductsDto[].class
+        );
 
         List<Product> products = new ArrayList<>();
 
-        for(FakeStoreProductsDto fakeStoreProductsDtoVar : fakeStoreProductsDtoVar){
-            products.add(convertFakeStoreProductDtoToProduct(fakeStoreProductsDtoVar));
+        for(FakeStoreProductsDto fakeStoreProductsDto : fakeStoreProductsDtos){
+            products.add(convertFakeStoreProductDtoToProduct(fakeStoreProductsDto));
 
         }
         return products;
