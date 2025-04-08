@@ -21,12 +21,15 @@ public class FakeStoreProductService implements ProductService {
 
     @Override
     public Product getSingleProduct(Long productId) {
-        FakeStoreProductsDto fakeStoreProductsDto = restTemplate.getForObject(
-                "https://fakestoreapi.com/products/"+productId,
-                FakeStoreProductsDto.class);
 
-        // convert FakeStoreProductsDto to Profduct opject as the function returns Product
-        return convertFakeStoreProductDtoToProduct(fakeStoreProductsDto);
+        throw new RuntimeException("Something went wrong");
+
+//        FakeStoreProductsDto fakeStoreProductsDto = restTemplate.getForObject(
+//                "https://fakestoreapi.com/products/"+productId,
+//                FakeStoreProductsDto.class);
+//
+//        // convert FakeStoreProductsDto to Profduct opject as the function returns Product
+//        return convertFakeStoreProductDtoToProduct(fakeStoreProductsDto);
     }
 
     @Override

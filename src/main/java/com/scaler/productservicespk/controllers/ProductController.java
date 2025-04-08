@@ -2,6 +2,8 @@ package com.scaler.productservicespk.controllers;
 
 import com.scaler.productservicespk.models.Product;
 import com.scaler.productservicespk.services.ProductService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,11 +18,27 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
-    //http://localhost:8080/products/1 => Get a single product with id 1
+/*    //http://localhost:8080/products/1 => Get a single product with id 1
     @GetMapping("/{id}")
     public Product getSingleProduct(@PathVariable("id") Long productId){
         return productService.getSingleProduct(productId);
+    }*/
+
+    //http://localhost:8080/products/1 => Get a single product with id 1
+    //Making use of Response Entity
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getSingleProduct(@PathVariable("id") Long productId){
+
+        try{
+            return new ResponseEntity<Product>(productService.getSingleProduct(productId),
+                    HttpStatus.OK);
+        }
+        catch(RuntimeException e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
     }
+
 
     //http://localhost:8080/products => Get all the products
     @GetMapping
