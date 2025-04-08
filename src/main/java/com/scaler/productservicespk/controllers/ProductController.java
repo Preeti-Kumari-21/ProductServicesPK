@@ -23,19 +23,11 @@ public class ProductController {
     //http://localhost:8080/products/1 => Get a single product with id 1
     //Making use of Response Entity
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getSingleProduct(@PathVariable("id") Long productId){
+    public ResponseEntity<Product> getSingleProduct(@PathVariable("id") Long productId) throws ProductNotFoundException {
 
-        try{
-            return new ResponseEntity<Product>(productService.getSingleProduct(productId),
-                    HttpStatus.OK);
-        }
-        catch (ProductNotFoundException e){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        catch(RuntimeException e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        return new ResponseEntity<Product>(
+                productService.getSingleProduct(productId),
+                HttpStatus.OK);
 
     }
 
