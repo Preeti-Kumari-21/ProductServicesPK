@@ -24,14 +24,14 @@ public class FakeStoreProductService implements ProductService {
     public Product getSingleProduct(Long productId) {
 
        //throw new RuntimeException("Something went wrong");
-        throw new ProductNotFoundException("Product not found");
+       // throw new ProductNotFoundException("Product not found");
 
-//        FakeStoreProductsDto fakeStoreProductsDto = restTemplate.getForObject(
-//                "https://fakestoreapi.com/products/"+productId,
-//                FakeStoreProductsDto.class);
-//
-//        // convert FakeStoreProductsDto to Product object as the function returns Product
-//        return convertFakeStoreProductDtoToProduct(fakeStoreProductsDto);
+        FakeStoreProductsDto fakeStoreProductsDto = restTemplate.getForObject(
+                "https://fakestoreapi.com/products/"+productId,
+                FakeStoreProductsDto.class);
+
+        // convert FakeStoreProductsDto to Product object as the function returns Product
+        return convertFakeStoreProductDtoToProduct(fakeStoreProductsDto);
     }
 
     @Override
