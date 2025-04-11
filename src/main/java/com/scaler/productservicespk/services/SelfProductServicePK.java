@@ -22,21 +22,21 @@ public class SelfProductServicePK implements ProductService{
     @Override
     public Product getSingleProduct(Long productId) throws ProductNotFoundException {
         Optional<Product> optionalProduct = productRepository.findById(productId);
-        if(optionalProduct.isEmpty()){
-            throw new ProductNotFoundException("Product not found with id " + productId);
-        }
 
+        if(optionalProduct.isEmpty()){
+            throw new ProductNotFoundException("Product with id " + productId + " not found");
+        }
         return optionalProduct.get();
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return List.of();
+        return productRepository.findAll();
     }
 
     @Override
     public Product createProduct(Product product) {
-        return null;
+        return productRepository.save(product);
     }
 
     @Override

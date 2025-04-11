@@ -41,7 +41,7 @@ public class ProductController {
 
     @PostMapping
     public Product createProduct(@RequestBody Product product){
-        return new Product();
+        return productService.createProduct(product);
     }
 
     //http://localhost:8080/products/1
