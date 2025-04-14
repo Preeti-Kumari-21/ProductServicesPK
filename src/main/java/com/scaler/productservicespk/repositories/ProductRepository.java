@@ -1,6 +1,7 @@
 package com.scaler.productservicespk.repositories;
 
 import com.scaler.productservicespk.models.Product;
+import com.scaler.productservicespk.repositories.projections.ProductWithTitleAndPrice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -31,5 +32,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Product save(Product product);
 
     @Query("select p.title,p.price from products p where p.id = :id")
-    List<Product> getTitleAndPriceById(@Param("id") Long id);
+    ProductWithTitleAndPrice getTitleAndPriceById(@Param("id") Long id);
 }
