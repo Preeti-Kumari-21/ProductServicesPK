@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class ProductServicesPkApplicationTests {
 
@@ -21,6 +23,17 @@ class ProductServicesPkApplicationTests {
         ProductWithTitleAndPrice productWithTitleAndPrice = productRepository.getTitleAndPriceById(1L);
         System.out.println(productWithTitleAndPrice.getPrice());
         System.out.println(productWithTitleAndPrice.getTitle());
+    }
+
+    @Test
+    void testQuery1(){
+        List<ProductWithTitleAndPrice> productWithTitleAndPriceList = productRepository.getListOfTitleAndPriceById(1L);
+       for(ProductWithTitleAndPrice productWithTitleAndPrice : productWithTitleAndPriceList){
+           System.out.println(productWithTitleAndPrice.getPrice());
+           System.out.println(productWithTitleAndPrice.getTitle());
+           System.out.println("------------------");
+
+       }
     }
 
 }
