@@ -1,5 +1,6 @@
 package com.scaler.productservicespk;
 
+import com.scaler.productservicespk.repositories.CategoryRepository;
 import com.scaler.productservicespk.repositories.ProductRepository;
 import com.scaler.productservicespk.repositories.projections.ProductWithTitleAndPrice;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,8 @@ class ProductServicesPkApplicationTests {
 
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Test
     void contextLoads() {
@@ -34,6 +37,11 @@ class ProductServicesPkApplicationTests {
            System.out.println("------------------");
 
        }
+    }
+
+    @Test
+    void testQuery2(){
+        categoryRepository.deleteById(7L);
     }
 
 }
