@@ -31,6 +31,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Override
     Product save(Product product);
 
-    @Query("select p.title,p.price from products p where p.id = :id")
+    @Query("select p.title as title,p.price price from products p where p.id = :id")
     ProductWithTitleAndPrice getTitleAndPriceById(@Param("id") Long id);
 }
