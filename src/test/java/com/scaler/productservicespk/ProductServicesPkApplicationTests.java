@@ -1,5 +1,6 @@
 package com.scaler.productservicespk;
 
+import com.scaler.productservicespk.models.Category;
 import com.scaler.productservicespk.repositories.CategoryRepository;
 import com.scaler.productservicespk.repositories.ProductRepository;
 import com.scaler.productservicespk.repositories.projections.ProductWithTitleAndPrice;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class ProductServicesPkApplicationTests {
@@ -45,5 +47,11 @@ class ProductServicesPkApplicationTests {
         categoryRepository.deleteById(7L);
     }
 */
+
+    @Test
+    void testQuery3(){
+       Optional<Category> category = categoryRepository.findById(7L);
+        System.out.println("DEBUG");
+        }
 
 }
