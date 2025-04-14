@@ -15,6 +15,6 @@ public class Category extends BaseModel{
     private String name;
     private String value;
 
-    @OneToMany(mappedBy = "category",cascade = CascadeType.REMOVE)
-    private List<Product> products;
+/*    @OneToMany(mappedBy = "category",cascade = CascadeType.REMOVE)
+    private List<Product> products;*/
 }

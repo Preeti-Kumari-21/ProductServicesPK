@@ -39,9 +39,11 @@ class ProductServicesPkApplicationTests {
        }
     }
 
+/*
     @Test
     void testQuery2(){
         categoryRepository.deleteById(7L);
     }
+*/
 
 }

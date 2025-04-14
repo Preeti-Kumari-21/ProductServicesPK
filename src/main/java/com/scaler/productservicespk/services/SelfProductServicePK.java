@@ -38,7 +38,7 @@ public class SelfProductServicePK implements ProductService{
         return productRepository.findAll();
     }
 
-    @Override
+/*    @Override
     public Product createProduct(Product product) {
         if(product.getCategory() != null){
             if(product.getCategory().getId() == null){
@@ -72,6 +72,11 @@ public class SelfProductServicePK implements ProductService{
         else {
             throw new RuntimeException("Category cannot be empty while creating product");
         }
+        return productRepository.save(product);
+    }*/
+
+    @Override
+    public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
