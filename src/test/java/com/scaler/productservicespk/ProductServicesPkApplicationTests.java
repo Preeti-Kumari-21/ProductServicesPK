@@ -1,9 +1,11 @@
 package com.scaler.productservicespk;
 
 import com.scaler.productservicespk.models.Category;
+import com.scaler.productservicespk.models.Product;
 import com.scaler.productservicespk.repositories.CategoryRepository;
 import com.scaler.productservicespk.repositories.ProductRepository;
 import com.scaler.productservicespk.repositories.projections.ProductWithTitleAndPrice;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,9 +51,22 @@ class ProductServicesPkApplicationTests {
 */
 
     @Test
+    @Transactional
     void testQuery3(){
        Optional<Category> category = categoryRepository.findById(7L);
-        System.out.println("DEBUG");
+
+        List<Product> products = category.get().getProducts();
+
+        for(Product product : products){
+            System.out.println(product.getTitle());
+            System.out.println(product.getPrice());
+            System.out.println(product.getDescription());
+            System.out.println(product.getImage());
+            System.out.println(product.getCategory().getName());
+            System.out.println(product.getCategory().getValue());
+            System.out.println("------------------");
+        }
+
         }
 
 }
